@@ -1,0 +1,7 @@
+CREATE DATABASE login;
+USE login;
+
+SHOW TABLES;
+
+SELECT *
+FROM logins;
