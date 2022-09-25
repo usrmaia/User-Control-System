@@ -9,6 +9,6 @@ const sequelize = new Sequelize(env.database, env.username, env.password, {
 const db = {}
 db.Sequelize = Sequelize
 db.sequelize = sequelize
-db.Cliente = require("./../models/client.model.js")(sequelize, Sequelize)
+db.Account = require("../models/login.model.js")(sequelize, Sequelize)
 
 module.exports = db

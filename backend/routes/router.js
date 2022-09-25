@@ -1,11 +1,11 @@
 let express = require("express")
 let router = express.Router()
-const cliente = require("./../controllers/controller")
+const Account = require("./../controllers/controller")
 
-router.post("/api/cliente", cliente.create)
-router.get("/api/cliente/:id", cliente.getCliente)
-router.get("/api/cliente", cliente.getClientes)
-router.put("/api/cliente/:id", cliente.update)
-router.delete("/api/cliente/:id", cliente.delete)
+router.post("/api/account", Account.create)
+router.get("/api/account/:id", Account.getAccount)
+router.get("/api/account", Account.getAccounts)
+router.put("/api/account/:id", Account.update)
+router.delete("/api/account/:id", Account.delete)
 
 module.exports = router

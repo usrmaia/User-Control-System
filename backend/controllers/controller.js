@@ -1,65 +1,84 @@
 const db = require("./../config/db.config")
-const Cliente = db.Cliente
+const Account = db.Account
 
 exports.create = (request, response) => {
-    let cliente = {}
+    let account = {}
 
     try {
-        cliente.nome = request.body.nome
-        cliente.email = request.body.email
-        cliente.idade = request.body.idade
+        account.username = request.body.username
+        account.email = request.body.email
+        account.birthdate = request.body.birthdate
 
-        Cliente.create(cliente, {
-            attribute: ["id", "nome", "email", "idade"]
-        }).then(cliente => {
-            response.status(200).json(cliente)
+        Account.create(account, {
+            attribute: ["id", "username", "email", "birthdate"]
+        }).then(account => {
+            response.status(200).json({
+                message: "Success Creating Account!",
+                account: account
+            })
+        }).catch(error => {
+            response.status(400).json({
+                message: "Error Creating Account!",
+                account: account,
+                error: error.message
+            })
         })
     } catch (error) {
         response.status(500).json({
-            message: "Error Creating!",
+            message: "Error Creating Account!",
+            account: account,
             error: error.message
         })
     }
 }
 
-exports.getCliente = (request, response) => {
-    Cliente.findByPk(request.params.id, {
-        attribute: ["id", "nome", "email", "idade"]
-    }).then(cliente => {
-        response.status(200).json(cliente)
+exports.getAccount = (request, response) => {
+    let accountId = request.params.id
+
+    Account.findByPk(accountId, {
+        attribute: ["id", "username", "email", "birthdate"]
+    }).then(account => {
+        response.status(200).json({
+            message: "Success in Getting Account!",
+            account: account
+        })
     }).catch(error => {
-        console.log("Erro ao retornar cliente: " + error)
         response.status(500).json({
-            message: "Error When Getting!",
+            message: "Error When Getting Account!",
+            id: accountId,
             error: error
         })
     })
 }
 
-// TODO getClientes
-exports.getClientes = (request, response) => {
-    try{
-		Cliente.findAll({
-            attributes: ['id', 'nome', 'idade', 'email']
-        }).then(clientes => {
-		    response.status(200).json(clientes)
-		})
-	}catch(error) {
-		response.status(500).json({
-		    message: "Error Returning All Clients!",
-		    error: error
-		});
-	}
+exports.getAccounts = (request, response) => {
+    Account.findAll({
+        attributes: ["id", "username", "email", "birthdate"]
+    }).then(account => {
+        response.status(200).json({
+            message: "Success in Getting All Accounts!",
+            account: account
+        })
+    }).catch(error => {
+        response.status(500).json({
+            message: "Error When Getting All Accounts!",
+            error: error
+        })
+	})
 }
 
 exports.delete = async (request, response) => {
-    try {
-        let clientId = request.params.id
-        let cliente = await Cliente.findByPk(clientId)
+    let accountId = request.params.id
 
-        if (cliente) {
-            await cliente.destroy();
-            response.status(200).json("Successful Deleting!")
+    try {
+        let account = await Account.findByPk(accountId)
+
+        if (account) {
+            await account.destroy();
+            response.status(200).json({
+                message: "Successful Deleting!",
+                account_deleted: account
+            })
         } else {
             response.status(404).json({
                 message: "Error Deleting, Id Does Not Exist!",
@@ -68,55 +87,52 @@ exports.delete = async (request, response) => {
         }
     } catch (error) {
         response.status(500).json({
-            message: "Could Not Delete Client " + request.params.id + "!",
+            message: `Could Not Delete Account ${accountId}!`,
             error: error
         })
     }
 }
 
 exports.update = async (request, response) => {
-    try {
-        let clientId = request.params.id
-        let cliente = await Cliente.findByPk(clientId)
-        console.log(cliente)
+    let accountId = request.params.id
 
-        if (cliente) {
-            let updateObject = {
-                nome: request.body.nome,
+    try {
+        let account = await Account.findByPk(accountId)
+
+        if (account) {
+            let updatedObject = {
+                username: request.body.username,
                 email: request.body.email,
-                idade: request.body.idade
+                birthdate: request.body.birthdate 
+                // ALERT - birthdate deve ser string
             }
 
-            let result = await Cliente.update(updateObject, {
+            let result = await Account.update(updatedObject, {
                 returning: true,
-                where: {id: clientId},
-                attributes: ["id", "nome", "email", "idade"]
+                where: {id: accountId},
+                attributes: ["id", "username", "email", "birthdate"]
             })
-
-            console.log(result) 
-            // se deu errado [0]
-            // se deu certo [undefined, 1]
 
             if (result[1]) {
                 response.status(200).json({
                     message: "Success When Updating",
-                    result: result
+                    result: result,
                 })
             } else {
                 response.status(500).json({
-                    message: "The Client" + clientId + "Could Be Updated",
-                    error: "The Client" + clientId + "Could Be Updated"
+                    message:`The Account ${accountId} Could Be Updated`,
+                    error: `The Account ${accountId} Could Be Updated`
                 })
             }
         } else {
             response.status(404).json({
-                message: "Could Not Find The Cliente" + clientId,
-                error: "Could Not Find The Cliente" + clientId
+                message: `Error Updating account`,
+                error: `Could Not Find The account ${accountId}`
             })
         }
     } catch (error) {
         response.status(500).json({
-            message: "Error Updating Client" + request.params.id,
+            message: `Error Updating Client ${accountId}`,
             error: error
         })
     }
