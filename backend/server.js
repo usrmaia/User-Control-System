@@ -5,7 +5,7 @@ var bodyParser = require("body-parser")
 global.__basedir = __dirname
 
 const db = require("./config/db.config")
-const Account = db.Account
+const Client = db.Client
 let router = require("./routes/router")
 
 const cors = require("cors")
@@ -30,17 +30,17 @@ db.sequelize.sync({
     force: true
 }).then(() => {
     console.log("Rewriting And Populate The Table")
-    Account.sync().then(() => {
-        const account = [
-            {username: "Pedro", email: "pedro@gmail.com", birthdate: "1999-05-30"},
-            {username: "Sara", email: "sara@gmail.com", birthdate: "1995-01-23"},
-            {username: "Emilly", email: "emilly@gmail.com", birthdate: "1990-09-12"},
-            {username: "Ricardo", email: "ricardo@gmail.com", birthdate: "1988-07-18"},
-            {username: "Daniel", email: "daniel@gmail.com", birthdate: "2001-01-06"}
+    Client.sync().then(() => {
+        const client = [
+            {name: "Pedro", email: "pedro@gmail.com", birthdate: "1999-05-30"},
+            {name: "Sara", email: "sara@gmail.com", birthdate: "1995-01-23"},
+            {name: "Emilly", email: "emilly@gmail.com", birthdate: "1990-09-12"},
+            {name: "Ricardo", email: "ricardo@gmail.com", birthdate: "1988-07-18"},
+            {name: "Daniel", email: "daniel@gmail.com", birthdate: "2001-01-06"}
         ]
 
-        account.forEach((item) => {
-            Account.create(item)
+        client.forEach((item) => {
+            Client.create(item)
         });
     })
 })

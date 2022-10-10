@@ -1,6 +1,6 @@
-import APPRoutes from "./app_routes";
+import APPRoutes from "./App-routes";
 
-function App(props) {
+function App() {
   return (
     <>
       <APPRoutes />

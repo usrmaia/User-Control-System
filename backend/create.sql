@@ -1,5 +1,5 @@
-CREATE DATABASE login;
-USE login;
+CREATE DATABASE client_CRUD;
+USE client_CRUD;
 
 SHOW TABLES;
 

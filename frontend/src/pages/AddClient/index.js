@@ -1,9 +1,7 @@
-import { Components } from "react";
-
-function AddClient() {
+function AddClients() {
   return (
-    <h1>AddClient</h1>
+    <h1>AddClients</h1>
   )
 }
 
-export default AddClient
+export default AddClients
