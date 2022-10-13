@@ -9,7 +9,7 @@ function Home() {
         <div>
           <h1>User Control System</h1>
           <p>A solution to control the login of users of an application, all this in an easy and intuitive way!</p>
-          <Link to={"../client/view"}>Show More!</Link>
+          <Link to={"../client/view"} className="link">Show More!</Link>
         </div>
         <img src={img} alt="Imagem ilustrativa"/>
       </section>

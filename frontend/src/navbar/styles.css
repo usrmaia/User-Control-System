@@ -6,11 +6,15 @@ header, #logo, nav {
 }
 
 header {
-  background-color: red;
+  background-color: #e3e6ecff;
   width: 100vw;
   height: 15vh;
   padding-left: 40px;
   padding-right: 40px;
+}
+
+header > #logo > h1 {
+  color: #030027ff;
 }
 
 #logo > h1 {
@@ -25,6 +29,13 @@ header > nav > li {
 }
 
 header > nav > li > .link {
+  width: 100%;
+  height: 100%;
+  flex-grow: 1;
   text-decoration: inherit;
-  color: #000;
+  color: #030027ff;
+}
+
+header > nav > li > .link:hover {
+  color: #cc2936ff;
 }

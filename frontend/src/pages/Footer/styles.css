@@ -1,11 +1,25 @@
 #footer{
-  background-color: chocolate;
+  background-color: #030027ff;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   width: 100vw;
   height: 15vh;
+}
+
+#footer > h1 {
+  color: #f5f5f5ff;
+}
+
+#footer > div {
+  border-radius: 10%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#footer > div:hover {
+  background-color: rgb(10, 5, 65);
 }
 
 #footer > div > a {
@@ -17,5 +31,5 @@
 
 #footer > div > a {
   text-decoration: none;
-  color: #000;
+  color: #f5f5f5ff;
 }
