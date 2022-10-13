@@ -1,0 +1,24 @@
+#view {
+  margin: auto;
+}
+
+#view > table {
+  margin: auto;
+}
+
+th, td {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+button {
+  margin-left: 25px;
+}
+
+#view > table tr:nth-child(even) {
+  background-color: darkgrey;
+}
+
+#view > table tr:nth-child(odd) {
+  background-color: aliceblue;
+}

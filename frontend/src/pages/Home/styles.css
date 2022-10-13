@@ -1,0 +1,13 @@
+#home {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 85vh;
+}
+
+#home > img {
+  width: 550px;
+  height: auto;
+  padding-left: 20px;
+}

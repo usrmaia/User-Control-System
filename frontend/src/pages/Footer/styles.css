@@ -1,0 +1,21 @@
+#footer{
+  background-color: chocolate;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100vw;
+  height: 15vh;
+}
+
+#footer > div > a {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#footer > div > a {
+  text-decoration: none;
+  color: #000;
+}

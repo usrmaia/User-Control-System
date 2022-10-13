@@ -1,0 +1,26 @@
+#about {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 85vh;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+#about > div {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#about > div > div {
+  width: 400px;
+}
+
+#about > div > img {
+  height: 200px;
+  border-radius: 50%;
+}

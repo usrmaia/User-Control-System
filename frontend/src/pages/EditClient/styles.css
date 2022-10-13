@@ -1,0 +1,39 @@
+#edit {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#edit > form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: darkgray;
+  padding: 20px;
+  border-radius: 10%;
+}
+
+#edit > form > div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#edit > form > div > label {
+  padding-right: 10px;
+}
+
+#edit > form > button {
+  background-color: brown;
+  margin: 20px 20px 0 20px;
+  padding: 10px;
+  width: max-content;
+  width: 100%;
+}
+  
+#edit > img {
+    width: 400px;
+    height: auto;
+}

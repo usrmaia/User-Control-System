@@ -1,0 +1,30 @@
+header, #logo, nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header {
+  background-color: red;
+  width: 100vw;
+  height: 15vh;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+#logo > h1 {
+  font-size: 250%;
+}
+
+header > nav > li {
+  font-size: 150%;
+  padding-left: 60px;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+header > nav > li > .link {
+  text-decoration: inherit;
+  color: #000;
+}
